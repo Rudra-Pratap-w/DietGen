@@ -1,6 +1,19 @@
 # Welcome to your Expo app 👋
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## GUIDELINES
+1. Do not push on main branch.
+2. Make a PR.
+3. Write a good desciption of your work.
+##
+This is project was offered in the department of Information Technology at Indian Institute of Engineering Science and Technology,Shibpur.
+## TEAM 
+1. Rudra Pratap Singh
+2. Priyaranjan Kumar Tiwari
+3. Krishna Chandra Shaw
+
+## 
+I have use the expo SDK version 54.0.0, so some dependency issue might occur so debug for the same.
 
 ## Get started
 
