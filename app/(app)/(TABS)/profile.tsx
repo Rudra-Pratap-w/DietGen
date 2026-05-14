@@ -101,25 +101,33 @@ export default function ProfileScreen() {
     setSaving(false);
   };
 
-  const renderField = (label: string, fieldKey: keyof Profile, placeholder: string = "Not set", suffix: string = "") => {
-    const isNumeric = fieldKey === 'age' || fieldKey === 'height' || fieldKey === 'weight';
+  const renderField = (
+    label: string,
+    fieldKey: keyof Profile,
+    placeholder: string = "Not set",
+    suffix: string = "",
+  ) => {
+    const isNumeric =
+      fieldKey === "age" || fieldKey === "height" || fieldKey === "weight";
     return (
       <>
-        <Text className="text-gray-600 text-lg mb-1 mt-2">
-          {label}
-        </Text>
+        <Text className="text-gray-600 text-lg mb-1 mt-2">{label}</Text>
         {isEditing ? (
           <TextInput
             style={styles.input}
             value={editedProfile?.[fieldKey]?.toString() || ""}
-            onChangeText={(text) => setEditedProfile({ ...editedProfile!, [fieldKey]: text })}
+            onChangeText={(text) =>
+              setEditedProfile({ ...editedProfile!, [fieldKey]: text })
+            }
             placeholder={placeholder}
             placeholderTextColor="#888"
-            keyboardType={isNumeric ? 'numeric' : 'default'}
+            keyboardType={isNumeric ? "numeric" : "default"}
           />
         ) : (
           <Text style={styles.item}>
-            {profile?.[fieldKey] ? `${profile[fieldKey]}${suffix}` : placeholder}
+            {profile?.[fieldKey]
+              ? `${profile[fieldKey]}${suffix}`
+              : placeholder}
           </Text>
         )}
       </>
@@ -144,34 +152,53 @@ export default function ProfileScreen() {
   }
 
   return (
-    <SafeAreaView
-      style={styles.container}
-      className="m-5 rounded-xl flex-1"
-    >
+    <SafeAreaView style={styles.container} className="m-5 rounded-xl flex-1">
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingBottom: 40 }}
         className="flex-1"
       >
         <View className="mx-4 gap-4 text-bold text-2xl rounded-lg">
-          <View
-            className="flex-col items-center mb-5 text-bold text-2xl p-6 rounded-lg relative"
-          >
+          <View className="flex-col items-center mb-5 text-bold text-2xl p-6 rounded-lg relative">
             <TouchableOpacity
               onPress={isEditing ? handleSave : handleEditToggle}
-              style={{ position: 'absolute', top: 5, right: 5, backgroundColor: isEditing ? '#0a7ea4' : '#355872', paddingHorizontal: 12, paddingVertical: 8, borderRadius: 8, zIndex: 10 }}
+              style={{
+                position: "absolute",
+                top: 5,
+                right: 5,
+                backgroundColor: isEditing ? "#0a7ea4" : "#355872",
+                paddingHorizontal: 12,
+                paddingVertical: 8,
+                borderRadius: 8,
+                zIndex: 10,
+              }}
             >
-              {saving ? <ActivityIndicator size="small" color="#fff" /> :
-                <Text style={{ color: "white", fontWeight: "bold" }}>{isEditing ? "Save" : "Edit"}</Text>
-              }
+              {saving ? (
+                <ActivityIndicator size="small" color="#fff" />
+              ) : (
+                <Text style={{ color: "white", fontWeight: "bold" }}>
+                  {isEditing ? "Save" : "Edit"}
+                </Text>
+              )}
             </TouchableOpacity>
 
             {isEditing && (
               <TouchableOpacity
                 onPress={handleEditToggle}
-                style={{ position: 'absolute', top: 5, left: 5, backgroundColor: '#DB1A1A', paddingHorizontal: 12, paddingVertical: 8, borderRadius: 8, zIndex: 10 }}
+                style={{
+                  position: "absolute",
+                  top: 5,
+                  left: 5,
+                  backgroundColor: "#DB1A1A",
+                  paddingHorizontal: 12,
+                  paddingVertical: 8,
+                  borderRadius: 8,
+                  zIndex: 10,
+                }}
               >
-                <Text style={{ color: "white", fontWeight: "bold" }}>Cancel</Text>
+                <Text style={{ color: "white", fontWeight: "bold" }}>
+                  Cancel
+                </Text>
               </TouchableOpacity>
             )}
 
@@ -182,15 +209,11 @@ export default function ProfileScreen() {
                 height: 100,
                 borderRadius: 100,
                 backgroundColor: "#355872",
-                marginTop: 15
+                marginTop: 15,
               }}
             />
-            <Text style={styles.title}>
-              {user?.firstName || "User"}
-            </Text>
-            <Text style={styles.subtitle}>
-              {profile.email_id}
-            </Text>
+            <Text style={styles.title}>{user?.firstName || "User"}</Text>
+            <Text style={styles.subtitle}>{profile.email_id}</Text>
           </View>
           <View style={{ margin: 4 }}>
             <View style={styles.fieldtitle}>
@@ -212,7 +235,6 @@ export default function ProfileScreen() {
               {renderField("Weight", "weight", "Not set", " kg")}
             </View>
 
-
             <View style={styles.fieldtitle}>
               <Ionicons name="nutrition" size={28} color="black" />
               <Text style={styles.headingText}>Health & Diet</Text>
@@ -220,6 +242,7 @@ export default function ProfileScreen() {
             <View className="flex-col mb-4">
               {renderField("Diet", "diet")}
               {renderField("Allergy", "allergy")}
+              {renderField("Disease", "disease")}
             </View>
           </View>
         </View>
@@ -250,14 +273,14 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "bold",
     marginBottom: 5,
-    fontFamily: "Manrope-Bold"
+    fontFamily: "Manrope-Bold",
   },
   subtitle: {
     fontSize: 15,
     fontWeight: "bold",
     marginBottom: 5,
     fontFamily: "Poppins-Regular",
-    color: "gray"
+    color: "gray",
   },
 
   item: {

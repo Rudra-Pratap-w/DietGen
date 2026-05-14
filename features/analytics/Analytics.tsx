@@ -32,7 +32,7 @@ export default function Analytics({ range }: any) {
 
       <View style={styles.card}>
         <Text style={styles.title}>Net Calories</Text>
-        <Text style={styles.big}>1,840 kcal</Text>
+        <Text style={styles.big}>1,900 kcal</Text>
 
         <LineChart
           data={{

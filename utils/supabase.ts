@@ -20,7 +20,7 @@ export const useSupabaseClient = () => {
           let token;
           try {
             token = await getToken({ template: "supabase" });
-          } catch (err) {}
+          } catch (err) { }
           if (!token) token = await getToken();
 
           return fetch(url as RequestInfo, {

@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View, ActivityIndicator } from "react-native";
 import { useUser } from "@clerk/expo";
 import { useSupabaseClient } from "../../../utils/supabase";
+import { DietProvider } from "../../../utils/DietContext";
 const TabIcon = ({ focused, icon, title }: any) => {
   if (focused) {
     return (
@@ -72,6 +73,7 @@ const layout = () => {
   }
 
   return (
+    <DietProvider>
     <Tabs
       screenOptions={{
         tabBarShowLabel: false,
@@ -145,6 +147,7 @@ const layout = () => {
         }}
       />
     </Tabs>
+    </DietProvider>
   );
 };
 
